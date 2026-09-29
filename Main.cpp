@@ -2,7 +2,8 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include <sstream> 
+#include <sstream>
+#include <cctype>
 
 class Laptops {
 private:
@@ -29,15 +30,17 @@ public:
     }
 
     //-------------------GETTERS--------------------//
-    std::string getGraphics(){
+    std::string getGraphics() const{
         return Graphics;
     }
 
     int getRamAmount() const {
         std::string numeric_ram = "";
         for (char c : RAM) {
-            if (std::isdigit(c)) {
+            if (std::isdigit(static_cast<unsigned char>(c))) {
                 numeric_ram += c;
+            }else if(!numeric_ram.empty()){
+                break;
             }
         }
         return numeric_ram.empty() ? 0 : std::stoi(numeric_ram);
@@ -49,76 +52,86 @@ public:
       
         if (std::getline(is, line)) {
             if (line.empty()) return is; 
-
             std::stringstream ss(line);
             std::string temp_id, temp_size;
-
-          
             ss >> temp_id; 
-            
-           
             if (!temp_id.empty() && temp_id.back() == '.') {
                 temp_id.pop_back();
             }
             l.ID = std::stoi(temp_id);
-
-           
             ss.ignore(1); 
-
-            
             std::getline(ss, l.model_name, ',');
             std::getline(ss, l.CPU, ',');
             std::getline(ss, l.RAM, ',');
             std::getline(ss, l.Battery, ',');
             std::getline(ss, l.Graphics, ',');
-            
-        
             std::getline(ss, temp_size); 
             l.size = std::stoi(temp_size);
         }
         return is;
     }
+
+    std::vector<Laptops> start() const{
+         std::cout<<"Enter laptop list File: ";
+        std::string laptop_file;
+        std::cin>>laptop_file;
+        std::ifstream file(laptop_file);
+        if (!file.is_open()) {
+            std::cerr << "Could not open file!\n";
+        }
+
+        std::vector<Laptops> catalog;
+        Laptops temp_laptop;
+
+        while (file >> temp_laptop) {
+            catalog.push_back(temp_laptop);
+        }
+        file.close();
+        return catalog;
+    }
 };
 
-int main() {
-    std::cout<<"Enter laptop list File: ";
-    std::string laptop_file;
-    std::cin>>laptop_file;
-    std::ifstream file(laptop_file);
-    if (!file.is_open()) {
-        std::cerr << "Could not open file!\n";
-        return 1;
+
+//---------------------LAPTOP CATEGORY GOES HERE--------------------//
+
+void getMasterList(const std::vector<Laptops>& master){
+    std::cout<<"\n---------Master List----------\n";
+    for(const auto& laptop : master){
+        std::cout<<laptop<<"-------------------\n";
     }
+}
 
-    std::vector<Laptops> catalog;
-    Laptops temp_laptop;
-
-    while (file >> temp_laptop) {
-        catalog.push_back(temp_laptop);
-    }
-    
-    file.close();
-    for (const auto& laptop : catalog) {
-        std::cout << laptop << "-------------------\n";
-    }
-
-
-    //CATEGORIZATION (add more if you guys want)
-    std::cout<<"\nGAMING: ";
-    for(auto& laptop : catalog){
+void getGamingList(const std::vector<Laptops>& gaming) {
+    std::cout<<"\n---------GAMING LAPTOPS----------\n";
+    for (const auto& laptop : gaming) {
         std::string gpu = laptop.getGraphics();
-        if(gpu.find("NVIDIA") != std::string::npos || gpu.find("AMD") != std::string::npos ){
-            std::cout<<laptop<<"\n";
+        if (gpu.find("NVIDIA") != std::string::npos ||
+            gpu.find("AMD") != std::string::npos) {
+            std::cout<<laptop<<"-------------------\n";
         }
     }
+}
 
-    std::cout<<"\nHIGH RAM: ";
-    for(const auto& laptop : catalog){
-        if(laptop.getRamAmount() > 12){
-            std::cout<<laptop<<"\n";
+void getHIGHRAMList(const std::vector<Laptops>& ram){
+     std::cout<<"\n---------HIGH RAM LAPTOPS----------\n";
+    for(const auto& laptop : ram){
+        if(laptop.getRamAmount() > 16){
+            std::cout<<laptop<<"-------------------\n";
         }
     }
+}
 
+//---------------------LAPTOP CATEGORY GOES HERE--------------------//
+
+
+int main() {
+    Laptops Loader;
+    std::vector<Laptops> master_list = Loader.start();
+
+    
+    getMasterList(master_list);
+    getGamingList(master_list);
+    getHIGHRAMList(master_list);
 
     return 0;
 }
