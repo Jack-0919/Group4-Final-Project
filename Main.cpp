@@ -21,11 +21,6 @@ public:
         : ID(id), model_name(m), CPU(c), RAM(r), Battery(b), Graphics(g), size(s) 
     {};
 
-    void PrintClass() {
-        std::cout << ID << "\n" << model_name << "\n" << CPU << "\n" 
-                  << RAM << "\n" << Battery << "\n" << Graphics << "\n" << size << "\n";
-    }
-
     friend std::ostream& operator<<(std::ostream& os, const Laptops& l) {
         os << "\nID: " << l.ID << "\nModel: " << l.model_name << "\nCPU: " << l.CPU 
            << "\nRAM: " << l.RAM << "\nBattery: " << l.Battery << "\nGraphics: " << l.Graphics 
