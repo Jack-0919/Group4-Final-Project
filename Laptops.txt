@@ -5,3 +5,4 @@
 5. HP Spectre x360,Intel Core i5,8GB LPDDR5,66Wh,Intel Iris Xe,13
 6. Razer Blade 16,Intel Core i9,64GB DDR5,95Wh,NVIDIA RTX 4090,16
 7. Acer Swift Go,AMD Ryzen 7,16GB LPDDR5,65Wh,AMD Radeon 780M,14
+8. Razer Blade,Intel Core i7,32GB LPDDR5,75wh,NVIDIA RTX 3050ti,17
