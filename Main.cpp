@@ -34,6 +34,22 @@ public:
         return Graphics;
     }
 
+    std::string getModel_name() const{
+        return model_name;
+    }
+
+    std::string getBattery() const{
+        return Battery;
+    }
+
+    std::string getCPU() const{
+        return CPU;
+    }
+
+    int getSize() const{
+        return size;
+    }
+
     int getRamAmount() const {
         std::string numeric_ram = "";
         for (char c : RAM) {
@@ -45,7 +61,7 @@ public:
         }
         return numeric_ram.empty() ? 0 : std::stoi(numeric_ram);
     }
-    //-------------------GETTERS--------------------//
+    //-------------------/GETTERS--------------------//
 
     friend std::istream& operator>>(std::istream& is, Laptops& l) {
         std::string line;
@@ -113,9 +129,29 @@ void getGamingList(const std::vector<Laptops>& gaming) {
 }
 
 void getHIGHRAMList(const std::vector<Laptops>& ram){
-     std::cout<<"\n---------HIGH RAM LAPTOPS----------\n";
+    std::cout<<"\n---------HIGH RAM LAPTOPS----------\n";
     for(const auto& laptop : ram){
         if(laptop.getRamAmount() > 16){
+            std::cout<<laptop<<"-------------------\n";
+        }
+    }
+}
+
+void getRyzen(const std::vector<Laptops>& ryzen){
+    std::cout<<"\n---------Ryzen CPU LAPTOPS----------\n";
+    for(const auto& laptop : ryzen){
+        std::string cpu = laptop.getCPU();
+        if(cpu.find("Ryzen") != std::string::npos){
+            std::cout<<laptop<<"-------------------\n";
+        }
+    }
+
+}
+
+void getSize14inch(const std::vector<Laptops>& size){
+    std::cout<<"\n--------- 14inch LAPTOPS----------\n";
+    for(const auto& laptop : size){
+        if(laptop.getSize() == 14){
             std::cout<<laptop<<"-------------------\n";
         }
     }
@@ -128,10 +164,12 @@ int main() {
     Laptops Loader;
     std::vector<Laptops> master_list = Loader.start();
 
-    
+
     getMasterList(master_list);
     getGamingList(master_list);
     getHIGHRAMList(master_list);
+    getRyzen(master_list);
+    getSize14inch(master_list);
 
     return 0;
 }
