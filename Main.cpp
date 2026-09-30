@@ -29,7 +29,7 @@ public:
         return os;
     }
 
-    //-------------------GETTERS--------------------//
+//These are getters
     std::string getGraphics() const{
         return Graphics;
     }
@@ -61,7 +61,6 @@ public:
         }
         return numeric_ram.empty() ? 0 : std::stoi(numeric_ram);
     }
-    //-------------------/GETTERS--------------------//
 
     friend std::istream& operator>>(std::istream& is, Laptops& l) {
         std::string line;
@@ -108,7 +107,7 @@ public:
 };
 
 
-//---------------------LAPTOP CATEGORY GOES HERE--------------------//
+//Laptop category
 
 void getMasterList(const std::vector<Laptops>& master){
     std::cout<<"\n---------Master List----------\n";
@@ -148,28 +147,27 @@ void getRyzen(const std::vector<Laptops>& ryzen){
 
 }
 
-void getSize14inch(const std::vector<Laptops>& size){
-    std::cout<<"\n--------- 14inch LAPTOPS----------\n";
-    for(const auto& laptop : size){
-        if(laptop.getSize() == 14){
-            std::cout<<laptop<<"-------------------\n";
+
+void getUltraportableList(const std::vector<Laptops>& inventory) {
+    std::cout << "\n---------ULTRAPORTABLE / ULTRABOOK LAPTOPS----------\n";
+    std::cout << "Innovation Note: These models represent the ultimate 'Spin-off' of mobility, \n";
+    std::cout << "maximizing untethered work with highly miniaturized hardware.\n";
+    
+    for(const auto& laptop : inventory) {
+        if(laptop.getSize() <= 14) {
+            std::cout << laptop << "-------------------\n";
         }
     }
 }
-
-//---------------------LAPTOP CATEGORY GOES HERE--------------------//
-
 
 int main() {
     Laptops Loader;
     std::vector<Laptops> master_list = Loader.start();
 
-
     getMasterList(master_list);
     getGamingList(master_list);
     getHIGHRAMList(master_list);
     getRyzen(master_list);
-    getSize14inch(master_list);
-
+    getUltraportableList(master_list);
     return 0;
 }
