@@ -147,6 +147,26 @@ void getRyzen(const std::vector<Laptops>& ryzen){
 
 }
 
+void getWorkstationCreatorList(const std::vector<Laptops>& workstation){
+    std::cout<<"\n---------WORKSTATION / CREATOR LAPTOPS----------\n";
+
+    for(const auto& laptop : workstation){
+
+        std::string cpu = laptop.getCPU();
+
+        bool highRAM = laptop.getRamAmount() >= 32;
+
+        bool premiumCPU = (
+            cpu.find("Xeon") != std::string::npos ||
+            cpu.find("i9") != std::string::npos ||
+            cpu.find("Ryzen") != std::string::npos &&cpu.find("9") != std::string::npos
+        );
+
+        if(highRAM || premiumCPU){
+            std::cout << laptop << "-------------------\n";
+        }
+    }
+}
 
 void getUltraportableList(const std::vector<Laptops>& inventory) {
     std::cout << "\n---------ULTRAPORTABLE / ULTRABOOK LAPTOPS----------\n";
@@ -168,6 +188,7 @@ int main() {
     getGamingList(master_list);
     getHIGHRAMList(master_list);
     getRyzen(master_list);
+    getWorkstationCreatorList(master_list);
     getUltraportableList(master_list);
     return 0;
 }
