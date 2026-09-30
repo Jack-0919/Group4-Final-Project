@@ -6,3 +6,11 @@
 6. Razer Blade 16,Intel Core i9,64GB DDR5,95Wh,NVIDIA RTX 4090,16
 7. Acer Swift Go,AMD Ryzen 7,16GB LPDDR5,65Wh,AMD Radeon 780M,14
 8. Razer Blade,Intel Core i7,32GB LPDDR5,75wh,NVIDIA RTX 3050ti,17
+9. Dell XPS 13,Intel Core Ultra 7,16GB LPDDR5x,55Wh,Intel Arc Graphics,13
+10. Lenovo Yoga 7i,AMD Ryzen AI 7,16GB LPDDR5x,70Wh,AMD Radeon 840M,14
+11. ASUS TUF Gaming A15,AMD Ryzen 9,16GB DDR5,90Wh,NVIDIA RTX 4050,15
+12. HP EliteBook 840 G10,Intel Core i5,16GB DDR5,51Wh,Intel Iris Xe,14
+13. Microsoft Surface Laptop,Snapdragon X Elite,16GB LPDDR5x,54Wh,Qualcomm Adreno,14
+14. ASUS ProArt P16,AMD Ryzen AI 9,32GB LPDDR5x,90Wh,NVIDIA RTX 4070,16
+15. Acer Aspire 3,Intel Celeron,4GB DDR4,40Wh,Intel UHD Graphics,15
+16. Lenovo Legion Pro 5,Intel Core i7,32GB DDR5,80Wh,NVIDIA RTX 4060,16
