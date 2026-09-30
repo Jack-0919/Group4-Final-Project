@@ -14,3 +14,6 @@
 14. ASUS ProArt P16,AMD Ryzen AI 9,32GB LPDDR5x,90Wh,NVIDIA RTX 4070,16
 15. Acer Aspire 3,Intel Celeron,4GB DDR4,40Wh,Intel UHD Graphics,15
 16. Lenovo Legion Pro 5,Intel Core i7,32GB DDR5,80Wh,NVIDIA RTX 4060,16
+17. ASUS Chromebook Plus CX34,Intel Core i3,8GB LPDDR5,50Wh,Intel UHD Graphics,14
+18. Lenovo IdeaPad 1,Intel Celeron,4GB DDR4,42Wh,Intel UHD Graphics,15
+19. Acer Chromebook 314,Intel Celeron,4GB LPDDR4,48Wh,Intel UHD Graphics,14
