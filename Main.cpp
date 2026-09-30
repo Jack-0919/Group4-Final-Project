@@ -9,7 +9,6 @@ class Laptops {
 private:
     int ID;
     std::string model_name;
-    std::string OS;
     std::string CPU;
     std::string RAM;
     std::string Battery;
@@ -20,11 +19,11 @@ public:
     Laptops() : ID(0), size(0) {}
 
     Laptops(int id, std::string m, std::string c, std::string r, std::string b, std::string g, int s) 
-        : ID(id), model_name(m), OS(o) CPU(c), RAM(r), Battery(b), Graphics(g), size(s) 
+        : ID(id), model_name(m), CPU(c), RAM(r), Battery(b), Graphics(g), size(s) 
     {};
 
     friend std::ostream& operator<<(std::ostream& os, const Laptops& l) {
-        os << "\nID: " << l.ID << "\nModel: " << l.model_name << "\nOS: " << l.OS << "\nCPU: " << l.CPU 
+        os << "\nID: " << l.ID << "\nModel: " << l.model_name << "\nCPU: " << l.CPU 
            << "\nRAM: " << l.RAM << "\nBattery: " << l.Battery << "\nGraphics: " << l.Graphics 
            << "\nsize: " << l.size << "\n";
         return os;
@@ -38,11 +37,7 @@ public:
     std::string getModel_name() const{
         return model_name;
     }
-
-    std::string getOS() const{
-        return OS;
-    }   
-
+  
     std::string getBattery() const{
         return Battery;
     }
@@ -81,7 +76,6 @@ public:
             l.ID = std::stoi(temp_id);
             ss.ignore(1); 
             std::getline(ss, l.model_name, ',');
-            std::getline(ss, l.OS, ',');
             std::getline(ss, l.CPU, ',');
             std::getline(ss, l.RAM, ',');
             std::getline(ss, l.Battery, ',');
@@ -181,28 +175,6 @@ void getUltraportableList(const std::vector<Laptops>& inventory) {
     
     for(const auto& laptop : inventory) {
         if(laptop.getSize() <= 14) {
-            std::cout << laptop << "-------------------\n";
-        }
-    }
-}
-
-void getBudgetChromebookList(const std::vector<Laptops>& inventory) {
-    std::cout << "\n---------BUDGET / CHROMEBOOK LAPTOPS----------\n";
-    std::cout << "Rule: Lightweight OS OR RAM under 8GB\n";
-
-    for (const auto& laptop : inventory) {
-
-        std::string os = laptop.getOS();
-
-        bool lightweightOS =
-            os.find("ChromeOS") != std::string::npos ||
-            os.find("Chrome OS") != std::string::npos ||
-            os.find("Linux") != std::string::npos ||
-            os.find("Lightweight") != std::string::npos;
-
-        bool lowRAM = laptop.getRamAmount() < 8;
-
-        if (lightweightOS || lowRAM) {
             std::cout << laptop << "-------------------\n";
         }
     }
