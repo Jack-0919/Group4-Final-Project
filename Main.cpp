@@ -192,17 +192,117 @@ void getBudgetChromebookList(const std::vector<Laptops>& inventory) {
         }
     }
 }
+//recommendation UI
+
+void recommendationUI(const std::vector<Laptops>& inventory) { 
+
+    int choice;
+
+    std::cout << "\n\n========================================\n";
+    std::cout << "       LAPTOP RECOMMENDATION UI\n";
+    std::cout << "========================================\n";
+
+    std::cout << "\nWhat type of laptop are you looking for?\n";
+    std::cout << "1. Gaming Laptop\n";
+    std::cout << "2. High RAM Laptop\n";
+    std::cout << "3. Ryzen CPU Laptop\n";
+    std::cout << "4. Workstation / Creator Laptop\n";
+    std::cout << "5. Ultraportable Laptop\n";
+    std::cout << "6. Budget / Chromebook Laptop\n";
+
+    std::cout << "\nEnter your choice(number 1-6): ";
+    std::cin >> choice;
+
+    std::vector<Laptops> recommendations;
+
+    for (const auto& laptop : inventory) {
+
+        bool match = false; 
+
+        if (choice == 1) {
+            std::string gpu = laptop.getGraphics();
+
+            if (gpu.find("NVIDIA") != std::string::npos ||
+                gpu.find("AMD") != std::string::npos) {
+                match = true;
+            }
+        } 
+
+        else if (choice == 2) {
+            if (laptop.getRamAmount() > 16) {
+                match = true;
+            }
+        }     
+
+        else if (choice == 3) {
+            if (laptop.getCPU().find("Ryzen") != std::string::npos) {
+                match = true;
+            }
+        }
+
+        else if (choice == 4) { 
+            std::string cpu = laptop.getCPU();
+
+            if (laptop.getRamAmount() >= 32 ||
+                cpu.find("Xeon") != std::string::npos ||
+                cpu.find("i9") != std::string::npos ||
+                (cpu.find("Ryzen") != std::string::npos &&
+                 cpu.find("9") != std::string::npos)) {
+                match = true;
+            }
+        }
+
+        else if (choice == 5) {
+            if (laptop.getSize() <= 14) {
+                match = true;
+            } 
+        }
+
+        else if (choice == 6) {
+            if (laptop.getRamAmount() < 8 ||
+                laptop.getModel_name().find("Chromebook")
+                != std::string::npos) {
+                match = true;
+            }
+        }
+
+        else {
+            std::cout << "\nInvalid choice!\n";
+            return;
+        }
+
+        if (match) {
+            recommendations.push_back(laptop);
+        }
+    }
+
+    std::cout << "\n---------RECOMMENDED LAPTOPS----------\n";
+
+    if (recommendations.empty()) {
+        std::cout << "No laptops found.\n";
+    }
+    else {
+        for (const auto& laptop : recommendations) {
+            std::cout << laptop << "-------------------\n";
+        }
+    }
+}
+
+
 
 int main() {
-    Laptops Loader;
-    std::vector<Laptops> master_list = Loader.start();
+    Laptops Loader; 
+    std::vector<Laptops> master_list = Loader.start(); 
+ 
+    getMasterList(master_list); 
+    getGamingList(master_list); 
+    getHIGHRAMList(master_list); 
+    getRyzen(master_list); 
+    getWorkstationCreatorList(master_list); 
+    getUltraportableList(master_list); 
+    getBudgetChromebookList(master_list); 
 
-    getMasterList(master_list);
-    getGamingList(master_list);
-    getHIGHRAMList(master_list);
-    getRyzen(master_list);
-    getWorkstationCreatorList(master_list);
-    getUltraportableList(master_list);
-    getBudgetChromebookList(master_list);
-    return 0;
+    recommendationUI(master_list);      
+ 
+    return 0; 
 }
