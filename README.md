@@ -16,7 +16,7 @@ A C++ program that reads a list of laptops from a text file and displays recomme
 
 ## Compilation
 ```
-g++ -std=c++11 -o laptop_recommender main.cpp
+g++ -std=c++11 -o main.cpp
 ```
 
 ## Usage
