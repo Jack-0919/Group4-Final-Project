@@ -87,7 +87,7 @@ public:
     }
 
     std::vector<Laptops> start() const{
-         std::cout<<"Enter laptop list File: ";
+        std::cout<<"Enter laptop list File: ";
         std::string laptop_file;
         std::cin>>laptop_file;
         std::ifstream file(laptop_file);
@@ -199,7 +199,7 @@ void recommendationUI(const std::vector<Laptops>& inventory) {
     int choice;
 
     std::cout << "\n\n========================================\n";
-    std::cout << "       LAPTOP RECOMMENDATION UI\n";
+    std::cout << "       LAPTOP RECOMMENDATION PROGRAM\n";
     std::cout << "========================================\n";
 
     std::cout << "\nWhat type of laptop are you looking for?\n";
