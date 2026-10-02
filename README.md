@@ -1,5 +1,15 @@
 # Group4-Final-Project
 
+MUHAMMAD ADAM AQIL BIN ROSLI          : 261UC260Y5
+JACKSON TIOH                          : 262UC2437S
+MUHAMMAD DANISH AIMAN BIN ABD HAMID   : 1231303473
+SYAKIR BASILUDDIN BIN SYAMSUL BAHRAIN : 253UC2TTTN
+PUTRA MOHAIFAL BIN MOHD KHAIRI        : 262UC2644X
+CHOO ZHEN HAO                         : 262UC2461X
+
+
+
+
 # Laptop Recommendation Program
 
 A C++ program that reads a list of laptops from a text file and displays recommendations by category.
