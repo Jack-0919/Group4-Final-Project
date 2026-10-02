@@ -198,21 +198,23 @@ void recommendationUI(const std::vector<Laptops>& inventory) {
 
     int choice;
 
-    std::cout << "\n\n========================================\n";
-    std::cout << "       LAPTOP RECOMMENDATION PROGRAM\n";
-    std::cout << "========================================\n";
-
-    std::cout << "\nWhat type of laptop are you looking for?\n";
-    std::cout << "1. Gaming Laptop\n";
-    std::cout << "2. High RAM Laptop\n";
-    std::cout << "3. Ryzen CPU Laptop\n";
-    std::cout << "4. Workstation / Creator Laptop\n";
-    std::cout << "5. Ultraportable Laptop\n";
-    std::cout << "6. Budget / Chromebook Laptop\n";
-    std::cout << "7. Quit the program";
 
 
     while(true){
+
+        std::cout << "\n\n========================================\n";
+        std::cout << "       LAPTOP RECOMMENDATION PROGRAM\n";
+        std::cout << "========================================\n";
+
+        std::cout << "\nWhat type of laptop are you looking for?\n";
+        std::cout << "1. Gaming Laptop\n";
+        std::cout << "2. High RAM Laptop\n";
+        std::cout << "3. Ryzen CPU Laptop\n";
+        std::cout << "4. Workstation / Creator Laptop\n";
+        std::cout << "5. Ultraportable Laptop\n";
+        std::cout << "6. Budget / Chromebook Laptop\n";
+        std::cout << "7. Quit the program";
+        
         std::cout << "\nEnter your choice(number 1-7): ";
         std::cin >> choice;
 
